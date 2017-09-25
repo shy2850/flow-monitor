@@ -66,7 +66,7 @@ const map = {
     '重连次数': 'reconnect_num',
     '当前各消息队列条目数': 'current_message_queue_size',
     '峰值各消息队列条目数': 'peek_message_queue_size',
-    
+
     '行为上报消息数': 'report_messages',
     '行为上报字节数': 'report_bytes',
     '行为丢弃消息数': 'drop_messages',
