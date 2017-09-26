@@ -23,8 +23,12 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "bootstrap": "^3.3.7",
+    "cpu-stat": "^2.0.1",
+    "disk-stat": "^1.0.4",
     "f2e-server": "^2.5.6",
     "immutable": "^3.8.1",
+    "mem-stat": "^1.0.5",
+    "net-stat": "^2.0.1",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",

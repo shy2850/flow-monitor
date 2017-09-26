@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom'
 
 import reducer from './reducer/index'
+import Top from './components/Top'
 import Dashboard from './components/Dashboard'
 import Admin from './components/Admin'
 
@@ -23,11 +24,16 @@ const App_404 = () => <h1 className="text-center">404</h1>
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Switch>
-                <Route path="/admin" component={Admin}/>
-                <Route path="/" component={Dashboard}/>
-                <Route component={App_404}/>
-            </Switch>
+            <div>
+                <Top />
+                <div className="container">
+                    <Switch>
+                        <Route path="/admin" component={Admin}/>
+                        <Route path="/" component={Dashboard}/>
+                        <Route component={App_404}/>
+                    </Switch>
+                </div>
+            </div>
         </Router>
     </Provider>,
     document.getElementById('app')
