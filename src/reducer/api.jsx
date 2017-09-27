@@ -1,6 +1,7 @@
 
-let cpuruntimeSent
 exports.os = {
-    cpuinfo: () => fetch('/cpu.info').then(res => res.json()),
-    cpuruntime: () => cpuruntimeSent || (cpuruntimeSent = new EventSource('/cpu.runtime'))
+    info: () => fetch('/os.info').then(res => res.json()),
+    runtime: () => new Promise(resolve => {
+        new Worker('../workers/os.js').addEventListener('message', resolve)
+    })
 }

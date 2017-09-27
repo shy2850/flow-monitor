@@ -3,8 +3,13 @@ const ServerSent = require('./misc/ServerSent.js')
 const Route = require('./Route')
 const route = new Route()
 
-route.on('cpu.info', JsonOut(require('./action/cpu/info.js')))
-route.on('cpu.runtime', ServerSent(require('./action/cpu/runtime.js')))
+route.on('os.info', JsonOut(require('./action/os/lshw.js')))
+route.on('os.runtime', ServerSent({
+    cpu: require('./action/os/cpu.js'),
+    mem: require('./action/os/mem.js'),
+    disk: require('./action/os/disk/runtime.js'),
+    net: require('./action/os/net.js')
+}))
 // BrowserRouter
 route.on(/^[\w\/]*$/, () => 'index.html')
 

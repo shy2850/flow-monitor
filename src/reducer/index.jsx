@@ -1,16 +1,9 @@
 import { fromJS } from '../immutable'
-import { os } from './api'
+import DashboardReducer from './dashboard'
 
 let initState = fromJS({
-
 })
 export default (state = initState, action) => (
+    DashboardReducer(state, action) ||
     state
 )
-
-os.cpuinfo().then(data => {
-    // console.log(data)
-})
-os.cpuruntime().onmessage = function ({data}) {
-    // console.log(data)
-}
