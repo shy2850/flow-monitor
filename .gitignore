@@ -5,4 +5,4 @@ dist
 output
 data
 .log
-
+.DS_Store

@@ -1,4 +1,4 @@
-const exec = (fn) => (req, resp) => {
+module.exports = (fn) => (req, resp) => {
     resp.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
@@ -8,6 +8,7 @@ const exec = (fn) => (req, resp) => {
         switch (typeof fn) {
         case 'function':
             resp.write(`data:${JSON.stringify(fn(req, resp))}\n\n`)
+            break
         default:
             let o = {}
             Object.keys(fn).map(k => {
@@ -22,5 +23,3 @@ const exec = (fn) => (req, resp) => {
     }, false)
     return false
 }
-
-module.exports = 
