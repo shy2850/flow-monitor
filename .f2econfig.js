@@ -1,5 +1,6 @@
 const { argv } = process
 const build = argv[argv.length - 1] === 'build'
+const onRoute = !build && require('./serve/index') 
 module.exports = {
     port: 33533,
     livereload: !build,
@@ -17,8 +18,8 @@ module.exports = {
         moduleIds: true,
         getModuleId: pathname => pathname.replace(/^[\\/]?src\//, '')
     },
-    buildFilter: pathname => /^(css|src|index)\b/.test(pathname),
-    onRoute: require('./serve/index'),
+    buildFilter: pathname => /^(css|src|index|favicon)\b/.test(pathname),
+    onRoute,
     include: /\$require\(["'\s]*([^"'\s]+)["'\s]*\)/g,
     // app: 'static',
     middlewares: [
