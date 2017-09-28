@@ -6,6 +6,11 @@
   "scripts": {
     "start": "f2e start",
     "lint": "eslint --ext .jsx src/ --fix",
+    "_cp_serve": "cp -rf ./serve ./dist",
+    "_cp_modules": "cd ./dist/ & mkdir node_modules & cp -rf ../node_modules/*-stat ./node_modules/ & cd ..",
+    "_cp_cfg": "cp -rf .f2econfig.serve.js ./dist",
+    "build": "f2e build",
+    "pack": "rm -rf ./dist & npm run build & npm run _cp_serve & npm run _cp_modules & npm run _cp_cfg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

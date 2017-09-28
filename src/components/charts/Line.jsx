@@ -13,13 +13,23 @@ export default class extends React.Component {
         const now = Date.now()
         const temp = '1'.repeat(TIMES).split('')
         const dateList = temp.map((n, i) => moment(now - i * 1000).format('HH:mm:ss')).reverse()
-
+        const legend = series.map(({name}) => name)
         return {
             title: {
                 text: title
             },
             tooltip: {
                 trigger: 'axis'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    magicType: {show: true, type: ['stack', 'tiled']},
+                    saveAsImage: {show: true}
+                }
+            },
+            legend: {
+                data: legend
             },
             xAxis: {
                 data: dateList
@@ -33,7 +43,7 @@ export default class extends React.Component {
                     name: line.name,
                     type: 'line',
                     showSymbol: false,
-                    data: temp.map((n, i) => line.data[i] || null).reverse()
+                    data: temp.map((n, i) => line.data[i]).reverse()
                 }
             })
         }

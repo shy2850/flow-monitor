@@ -29,9 +29,9 @@ module.exports = {
     ],
     bundles: [
         {
-            test: /^src\/(?!(require|index)).*$/,
+            test: /^src\/(?!(require|index|workers)).*$/,
             dist: 'src/index.js'
         }
     ],
-    output: require('path').join(__dirname, '../f2e-output')
+    output: require('path').join(__dirname, './dist')
 }
