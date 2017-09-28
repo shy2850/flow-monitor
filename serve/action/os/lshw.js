@@ -65,11 +65,11 @@ let networks = os.networkInterfaces()
 // GFX
 let gfxes = elements.filter(e => e.id === 'display').map(({product}) => ({product}))
 
-module.exports = {
+module.exports = () => ({
     processors,
     memories,
     disks,
     networks,
     gfxes,
     id: existsSync('/etc/machine-id') && readFileSync('/etc/machine-id') + '[not allowed]'
-}
+})

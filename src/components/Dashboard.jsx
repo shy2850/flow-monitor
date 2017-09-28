@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Tabs, Tab } from 'react-bootstrap'
+import { Panel, PanelGroup } from 'react-bootstrap'
+import RuntimeCPU from '../containers/os/RuntimeCPU'
 
-export default () => <h2>h2</h2>
+export default () => <PanelGroup>
+    <Panel>
+        <RuntimeCPU />
+    </Panel>
+</PanelGroup>

@@ -8,8 +8,8 @@ body {
     .navbar-brand {
         float: left;
         width: 120px;
-        height: 35px;
-        margin: 8px 20px 0 0;
+        height: 34px;
+        margin: 7px 0 0 15px;
         text-indent: -999em;
         border-radius: 17px;
         background: url('./img/logo.png') center center no-repeat;
@@ -18,5 +18,33 @@ body {
         &:hover {
             opacity: 1;
         }
+    }
+    .nav {
+        padding: 15px 0 10px;
+        .parent a {
+            margin-top: 10px;
+            text-indent: 0;
+            color: #555;
+            font-weight: bold;
+        }
+        .active a {
+            color: #69a;
+        }
+        a {
+            display: block;
+            padding: 6px 15px;
+            text-indent: 1.5em;
+            color: #777;
+        }
+    }
+    .body-container {
+        display: -webkit-flex;
+        display: flex;
+        > .navbar {
+            width: 200px;
+        }
+    }
+    .container {
+        width: 100%;
     }
 }

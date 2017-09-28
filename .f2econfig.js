@@ -1,6 +1,7 @@
 const { argv } = process
 const build = argv[argv.length - 1] === 'build'
 module.exports = {
+    port: 33533,
     livereload: !build,
     build,
     gzip: true,

@@ -11,7 +11,7 @@ const renderCpu = function renderCpu () {
             if (err) {
                 return err
             } else {
-                cpus[coreIndex] = percent
+                cpus[coreIndex] = Number(percent.toFixed(1))
             }
         })
     })

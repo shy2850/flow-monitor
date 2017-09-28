@@ -1,2 +1,3 @@
+const os = require('os')
 const netStat = require('net-stat')
-module.exports = () => netStat.raw()
+module.exports = () => os.platform() === 'linux' && netStat.raw()
