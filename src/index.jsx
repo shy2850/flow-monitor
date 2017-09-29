@@ -14,6 +14,7 @@ import {
 import reducer from './reducer/index'
 import { Top, Left } from './components/Nav'
 import Dashboard from './components/Dashboard'
+import OSInfo from './containers/os/OSInfo'
 import Admin from './components/Admin'
 import { setOsInfo, beginOsRuntime } from './reducer/dashboard'
 
@@ -25,7 +26,7 @@ const store = compose(
 store.dispatch(setOsInfo())
 store.dispatch(beginOsRuntime())
 
-const App_404 = () => <h1 className="text-center">404</h1>
+const App_404 = () => <h1 className="text-center">404 Not Found</h1>
 ReactDOM.render(
     <Provider store={store}>
         <Router>
@@ -35,8 +36,8 @@ ReactDOM.render(
                     <Left />
                     <div className="container">
                         <Switch>
-                            <Route path="/admin" component={Admin}/>
-                            <Route path="/" component={Dashboard}/>
+                            <Route path="/os/info" component={OSInfo}/>
+                            <Route path="/" exact component={Dashboard}/>
                             <Route component={App_404}/>
                         </Switch>
                     </div>

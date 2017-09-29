@@ -24,8 +24,8 @@ const elements = resolve(base)
 // CPU 插槽
 let processors = elements.filter(c => c['class'] === 'processor').map(({
     version,
-    children,
-    configuration
+    children = [],
+    configuration = {}
 }) => {
     return {
         // CPU 品牌型号
@@ -50,26 +50,38 @@ let memories = elements.find(c => c['id'] === 'memory').children.map(({
 
 // 硬盘信息
 let disks = elements.filter(c => c['id'] === 'disk').map(({
+    description,
     product,
     size
 }) => {
     return size ? {
         size,
-        product
+        product,
+        description
     } : {}
 })
 
 // net
 let networks = os.networkInterfaces()
+let nets = Object.keys(networks).reduce((base, key) => base.concat(networks[key].map(n => {
+    n.id = key
+    let info = elements.find(item => {
+        if (item.serial === n.mac && item.product) {
+            n.product = item.product
+            return true
+        }
+    })
+    return n
+})), [])
 
 // GFX
-let gfxes = elements.filter(e => e.id === 'display').map(({product}) => ({product}))
+let gfxes = elements.filter(e => e.id === 'display').map(({product, description}) => ({product, description}))
 
 module.exports = () => ({
     processors,
     memories,
     disks,
-    networks,
+    nets,
     gfxes,
     id: existsSync('/etc/machine-id') && readFileSync('/etc/machine-id') + '[not allowed]'
 })

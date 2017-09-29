@@ -1,6 +1,12 @@
 @import (inline) url('../node_modules/bootstrap/dist/css/bootstrap.css');
 @blue: #239ed7;
 @green: #5db87b;
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
 body {
     background: #f2f4f8;
 }
@@ -49,5 +55,22 @@ body {
     }
     .container {
         width: 100%;
+    }
+    .panel {
+        overflow: hidden;
+    }
+    .card-panel-holder {
+        .panel-body {
+            padding: 8px 8px 0;
+            > p {
+                .ellipsis()
+            }
+            > [class*="col-"] {
+                padding: 0 6px 6px;
+                .panel {
+                    margin: 4px 0;
+                }
+            }
+        }
     }
 }

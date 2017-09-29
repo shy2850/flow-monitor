@@ -7,9 +7,9 @@ const {
 } = Navbar
 const MENUS = [
     {title: '系统状态', to: '/', parent: true},
-    {title: '运行状态', to: '/'},
-    {title: '硬件信息', to: '/os/info'},
     {title: '硬件状态', to: '/os/run'},
+    {title: '硬件信息', to: '/os/info'},
+    {title: '运行状态', to: '/sys/run'},
     {title: '系统设置', to: '/cfg/base', parent: true},
     {title: '基础配置', to: '/cfg/base'},
     {title: '运行配置', to: '/cfg/run'},

@@ -8,6 +8,7 @@ export default class extends React.Component {
         const {
             title = '',
             series = [],
+            max = 100,
             unit = ''
         } = this.props
         const now = Date.now()
@@ -21,13 +22,13 @@ export default class extends React.Component {
             tooltip: {
                 trigger: 'axis'
             },
-            toolbox: {
-                show: true,
-                feature: {
-                    magicType: {show: true, type: ['stack', 'tiled']},
-                    saveAsImage: {show: true}
-                }
-            },
+            // toolbox: {
+            //     show: true,
+            //     feature: {
+            //         magicType: {show: true, type: ['stack', 'tiled']},
+            //         saveAsImage: {show: true}
+            //     }
+            // },
             legend: {
                 data: legend
             },
@@ -35,6 +36,7 @@ export default class extends React.Component {
                 data: dateList
             },
             yAxis: {
+                max,
                 splitLine: {show: false},
                 axisLabel: {formatter: `{value}${unit}`}
             },
