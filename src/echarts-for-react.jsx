@@ -84,4 +84,3 @@ export default class ReactEcharts extends Component {
         )
     }
 }
-

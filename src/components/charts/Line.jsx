@@ -5,20 +5,24 @@ import moment from '../../moment'
 const TIMES = 60
 export default class extends React.Component {
     getOption = () => {
-        const {
+        let {
             title = '',
             series = [],
-            max = 100,
+            legend,
+            max,
             unit = ''
         } = this.props
         const now = Date.now()
         const temp = '1'.repeat(TIMES).split('')
         const dateList = temp.map((n, i) => moment(now - i * 1000).format('HH:mm:ss')).reverse()
-        const legend = series.map(({name}) => name)
+        legend = legend || series.map(({name}) => name)
         return {
-            title: {
-                text: title
-            },
+            title: title ? {
+                text: title,
+                textStyle: {
+                    fontSize: 12
+                }
+            } : undefined,
             tooltip: {
                 trigger: 'axis'
             },
@@ -29,10 +33,13 @@ export default class extends React.Component {
             //         saveAsImage: {show: true}
             //     }
             // },
-            legend: {
+            legend: legend.length ? {
+                right: 20,
+                width: '90%',
                 data: legend
-            },
+            } : undefined,
             xAxis: {
+                axisLine: {onZero: true},
                 data: dateList
             },
             yAxis: {
@@ -51,6 +58,7 @@ export default class extends React.Component {
         }
     }
     render () {
-        return <ReactEcharts option={this.getOption()} />
+        const { height = 300 } = this.props
+        return <ReactEcharts option={this.getOption()} style={{height}} />
     }
-} 
+}

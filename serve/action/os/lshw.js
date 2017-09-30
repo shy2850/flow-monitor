@@ -63,7 +63,7 @@ let disks = elements.filter(c => c['id'] === 'disk').map(({
 
 // net
 let networks = os.networkInterfaces()
-let nets = Object.keys(networks).reduce((base, key) => base.concat(networks[key].map(n => {
+let nets = Object.keys(networks).sort().reduce((base, key) => base.concat(networks[key].map(n => {
     n.id = key
     let info = elements.find(item => {
         if (item.serial === n.mac && item.product) {

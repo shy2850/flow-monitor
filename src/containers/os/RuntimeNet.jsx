@@ -1,13 +1,10 @@
 import { connect } from 'react-redux'
-import Line from '../../components/charts/Line'
+import RuntimeNet from '../../components/os/RuntimeNet'
 
 const mapStateToProps = (state) => {
     const runtime = state.getIn(['os.runtime'])
     return runtime ? {
-        title: '硬盘使用率',
-        max: 100,
-        unit: '%',
-        series: runtime.disk
+        net: runtime.net
     } : {}
 }
 const mapDispatchToProps = (dispatch) => {
@@ -15,4 +12,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Line)
+export default connect(mapStateToProps, mapDispatchToProps)(RuntimeNet)

@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
     return runtime ? {
         title: 'CPU使用率',
         unit: '%',
+        max: 100,
         series: runtime.cpu.map((data, index) => ({
             name: `cpu${index + 1}`,
             data

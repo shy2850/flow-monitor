@@ -13,7 +13,7 @@ const MENUS = [
     {title: '系统设置', to: '/cfg/base', parent: true},
     {title: '基础配置', to: '/cfg/base'},
     {title: '运行配置', to: '/cfg/run'},
-    {title: '维护配置', to: '/cfg/op'},
+    {title: '维护配置', to: '/cfg/op'}
 ]
 
 const BaseNav = class extends React.Component {
@@ -46,7 +46,6 @@ const BaseNav = class extends React.Component {
         </Navbar>
     }
 }
-
 
 export const Top = withRouter(BaseNav)
 export const Left = withRouter(class extends BaseNav {
