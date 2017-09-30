@@ -53,8 +53,8 @@ const renderNET = net => {
                 rb, tb, rp, tp,
                 rbps: [(rb - item.rb | 0) / 1024 / 1024].concat(item.rbps).slice(0, MAX_RUNTIME),
                 tbps: [(tb - item.tb | 0) / 1024 / 1024].concat(item.tbps).slice(0, MAX_RUNTIME),
-                rpps: [(rp - item.rp | 0) / 1024 / 1024].concat(item.rpps).slice(0, MAX_RUNTIME),
-                tpps: [(tp - item.tp | 0) / 1024 / 1024].concat(item.tpps).slice(0, MAX_RUNTIME)
+                rpps: [rp - item.rp | 0].concat(item.rpps).slice(0, MAX_RUNTIME),
+                tpps: [tp - item.tp | 0].concat(item.tpps).slice(0, MAX_RUNTIME)
             }
         }
         base['_runtime'] = item
