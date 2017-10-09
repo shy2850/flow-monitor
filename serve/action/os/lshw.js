@@ -83,5 +83,5 @@ module.exports = () => ({
     disks,
     nets,
     gfxes,
-    id: existsSync('/etc/machine-id') && readFileSync('/etc/machine-id') + '[not allowed]'
+    id: existsSync('/etc/machine-id') ? readFileSync('/etc/machine-id') : '[not allowed]'
 })

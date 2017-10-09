@@ -37,7 +37,7 @@ ReactDOM.render(
                     <div className="container">
                         <Switch>
                             <Route path="/os/info" component={OSInfo}/>
-                            <Route path="/" exact component={Dashboard}/>
+                            <Route path="/os/run" exact component={Dashboard}/>
                             <Route component={App_404}/>
                         </Switch>
                     </div>
