@@ -38,14 +38,14 @@ const SnapTable = ({nets = []}) => {
                 let dt = drop.transmit
                 let dr = drop.receive
 
-                sum_bt += bt
-                sum_br += br
-                sum_pt += pt
-                sum_pr += pr
-                sum_et += et
-                sum_er += er
-                sum_dt += dt
-                sum_dr += dr                
+                sum_bt += Number(bt) || 0
+                sum_br += Number(br) || 0
+                sum_pt += Number(pt) || 0
+                sum_pr += Number(pr) || 0
+                sum_et += Number(et) || 0
+                sum_er += Number(er) || 0
+                sum_dt += Number(dt) || 0
+                sum_dr += Number(dr) || 0                
                 return <tr>
                     <td>{name}</td>
                     <td>{toStorage(bt)}</td>
