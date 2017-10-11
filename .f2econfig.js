@@ -3,7 +3,7 @@ const build = argv[argv.length - 1] === 'build'
 const onRoute = !build && require('./serve/index')
 
 // Mock 启动
-require('./serve/action/sys/mock/mock.js')
+!build && require('./serve/action/sys/mock/mock.js')
 
 module.exports = {
     port: 33533,

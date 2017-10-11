@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
         unit: '%',
         max: 100,
         series: runtime.cpu.map((data, index) => ({
-            name: `cpu${index + 1}`,
+            name: `cpu${(101 + index).toString().slice(-2)}`,
             data
         }))
     } : {}
