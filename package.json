@@ -31,6 +31,7 @@
     "f2e-server": "^2.5.7",
     "immutable": "^3.8.1",
     "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
     "net-stat": "^2.0.1",
     "react": "^15.6.2",
     "react-bootstrap": "^0.31.3",

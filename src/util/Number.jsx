@@ -23,4 +23,20 @@ export const toStorage = (n, fixed_len = 2, unit) => {
     }
     return (n / set[unit]).toFixed(fixed_len) + unit
 }
-export const toHex = (n) => `${n}`.replace(/(\d)(?=(?:\d{3})+(\.|$))/g, '$1,')
+export const toTime = (t) => {
+    const M = [
+        {v: 1000, u: '秒'},
+        {v: 60, u: '分'},
+        {v: 60, u: '时'},
+        {v: 24, u: '天'}
+    ]
+    let result = ''
+    let i = 0
+    while (M[i] && t >= M[i].v) {
+        t = parseInt(t / M[i].v)
+        result = (M[i + 1] ? (t % M[i + 1].v) : t) + M[i].u + result
+        i++
+    }
+    return result
+}
+export const toHex = (n) => `${n}`.replace(/(\.\d{3})\d+$/, '$1').replace(/(\d)(?=(?:\d{3})+(\.|$))/g, '$1,')

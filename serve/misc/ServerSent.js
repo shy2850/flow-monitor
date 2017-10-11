@@ -1,3 +1,4 @@
+const beginTime = Date.now()
 module.exports = (fn) => (req, resp) => {
     resp.writeHead(200, {
         'Content-Type': 'text/event-stream',
@@ -10,7 +11,7 @@ module.exports = (fn) => (req, resp) => {
             resp.write(`data:${JSON.stringify(fn(req, resp))}\n\n`)
             break
         default:
-            let o = {}
+            let o = {running_time: Date.now() - beginTime}
             Object.keys(fn).map(k => {
                 o[k] = fn[k](req, resp)
             })

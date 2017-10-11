@@ -14,6 +14,13 @@ body {
     .navbar {
         margin-bottom: 15px;
     }
+    .navbar-header {
+        float: none;
+        .pull-right {
+            padding-right: 20px;
+            color: #666;
+        }
+    }
     .navbar-brand {
         float: left;
         width: 120px;
@@ -35,6 +42,10 @@ body {
             text-indent: 0;
             color: #555;
             font-weight: bold;
+        }
+        .indent a {
+            text-indent: 2.5em;
+            font-size: 12px;
         }
         .active a {
             color: #69a;
@@ -68,6 +79,16 @@ body {
                     margin: 4px 0;
                 }
             }
+        }
+    }
+
+    table {
+        &, th {
+            text-align: right;
+        }
+        th:first-child,
+        td:first-child {
+            text-align: left;
         }
     }
 }

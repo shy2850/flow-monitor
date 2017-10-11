@@ -10,6 +10,7 @@ route.on('os.runtime', ServerSent({
     disk: require('./action/os/disk/runtime.js'),
     net: require('./action/os/net.js')
 }))
+route.on('sys.runtime', ServerSent(require('./action/sys/runtime.js')))
 // BrowserRouter
 route.on(/^[\w\/]*$/, () => 'index.html')
 

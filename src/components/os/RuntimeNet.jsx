@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Row, Col, Panel } from 'react-bootstrap'
-import { toStorage, toHex } from '../../util/Number'
+import { toHex } from '../../util/Number'
 import Line from '../charts/Line'
 
 const SnapTable = ({nets = []}) => {
@@ -28,7 +28,7 @@ const SnapTable = ({nets = []}) => {
             </tr>
         </thead>
         <tbody>
-            {nets.map(({name, bytes, packets, errs, drop}) => {
+            {nets.map(({name, bytes, packets, errs, drop}, i) => {
                 let bt = bytes.transmit
                 let br = bytes.receive
                 let pt = packets.transmit
@@ -45,31 +45,31 @@ const SnapTable = ({nets = []}) => {
                 sum_et += Number(et) || 0
                 sum_er += Number(er) || 0
                 sum_dt += Number(dt) || 0
-                sum_dr += Number(dr) || 0                
-                return <tr>
+                sum_dr += Number(dr) || 0
+                return <tr key={`${i}`}>
                     <td>{name}</td>
-                    <td>{toStorage(bt)}</td>
-                    <td>{toStorage(br)}</td>
-                    <td className={pt ? '' : 'text-danger'}>{toHex(pt)}</td>
-                    <td className={et ? '' : 'text-danger'}>{toHex(et)}</td>
-                    <td className={dt ? '' : 'text-danger'}>{toHex(dt)}</td>
+                    <td>{toHex(bt)}</td>
+                    <td>{toHex(br)}</td>
+                    <td>{toHex(pt)}</td>
+                    <td className={et > 0 ? 'text-danger' : ''}>{toHex(et)}</td>
+                    <td className={dt > 0 ? 'text-danger' : ''}>{toHex(dt)}</td>
                     <td>{toHex(pr)}</td>
-                    <td className={er ? '' : 'text-danger'}>{toHex(er)}</td>
-                    <td className={dr ? '' : 'text-danger'}>{toHex(dr)}</td>
-                    <td>{br / pr}</td>
+                    <td className={er > 0 ? 'text-danger' : ''}>{toHex(er)}</td>
+                    <td className={dr > 0 ? 'text-danger' : ''}>{toHex(dr)}</td>
+                    <td>{toHex(br / pr)}</td>
                 </tr>
             })}
             <tr>
                 <td>汇总</td>
-                <td>{toStorage(sum_bt)}</td>
-                <td>{toStorage(sum_br)}</td>
-                <td className={sum_pt ? '' : 'text-danger'}>{toHex(sum_pt)}</td>
-                <td className={sum_et ? '' : 'text-danger'}>{toHex(sum_et)}</td>
-                <td className={sum_dt ? '' : 'text-danger'}>{toHex(sum_dt)}</td>
+                <td>{toHex(sum_bt)}</td>
+                <td>{toHex(sum_br)}</td>
+                <td>{toHex(sum_pt)}</td>
+                <td className={sum_et > 0 ? 'text-danger' : ''}>{toHex(sum_et)}</td>
+                <td className={sum_dt > 0 ? 'text-danger' : ''}>{toHex(sum_dt)}</td>
                 <td>{toHex(sum_pr)}</td>
-                <td className={sum_er ? '' : 'text-danger'}>{toHex(sum_er)}</td>
-                <td className={sum_dr ? '' : 'text-danger'}>{toHex(sum_dr)}</td>
-                <td>{sum_br / sum_pr}</td>
+                <td className={sum_er > 0 ? 'text-danger' : ''}>{toHex(sum_er)}</td>
+                <td className={sum_dr > 0 ? 'text-danger' : ''}>{toHex(sum_dr)}</td>
+                <td>{toHex(sum_br / sum_pr)}</td>
             </tr>
         </tbody>
     </Table>
@@ -97,8 +97,8 @@ export default ({net = {}}) => {
                 <Line title="接收流量 (mbps)" series={rbps} legend={[]} height={200}/>
             </Col>
             <Col md={6}>
-                <Line title="发送网包 (pps)" series={tpps} height={200} />
-                <Line title="接收网包 (pps)" series={rpps} legend={[]} height={200} />
+                <Line title="发送网包 (kpps)" series={tpps} height={200} />
+                <Line title="接收网包 (kpps)" series={rpps} legend={[]} height={200} />
             </Col>
         </Row>
     </Panel>
