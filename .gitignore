@@ -5,6 +5,6 @@ dist
 output
 data
 
-*.log
+**.log
 
 .DS_Store
