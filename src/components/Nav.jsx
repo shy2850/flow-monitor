@@ -13,7 +13,7 @@ const MENUS = [
     {title: '运行状态', to: '/sys/run'},
     {title: '总体状态', to: '/sys/run', sub: true},
     {title: '识别线程', to: '/sys/run/worker', sub: true},
-    {title: '采集线程', to: '/sys/run/act', sub: true},
+    {title: '采集线程', to: '/sys/run/logger', sub: true},
     {title: '系统设置', to: '/cfg/base', parent: true},
     {title: '基础配置', to: '/cfg/base'},
     {title: '运行配置', to: '/cfg/run'},

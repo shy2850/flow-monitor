@@ -13,6 +13,8 @@ const LOGGER_SIZE = Math.ceil(Math.random() * 10)
 // 行为数目
 const ACTION_SIZE = Math.ceil(Math.random() * 1000)
 
+const ACTION_IDS = '1'.repeat(ACTION_SIZE).split('').map((one, i) => Math.random() * i * 50 | 0)
+
 const random = (n = 1024) => Math.random() * n | 0
 const randomPlus = (k, n = 1024) => {
     let base = dataSet[k] || 0
@@ -170,7 +172,7 @@ const render = function render () {
         let report_bytes = randomPlus('report_bytes-' + i, 1024 * 1024)
         let drop_messages = randomPlus('drop_messages-' + i)
         let drop_bytes = randomPlus('drop_bytes-' + i, 1024 * 1024)
-        lines.push(`act: ${i + 1} ${report_messages} ${report_bytes} ${drop_messages} ${drop_bytes}`)
+        lines.push(`act: ${ACTION_IDS[i]} ${report_messages} ${report_bytes} ${drop_messages} ${drop_bytes}`)
     }
     
     let sum_peek_packet_buffer_size = peek('sum_peek_packet_buffer_size', random(1024 * THREAD_SIZE))

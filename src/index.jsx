@@ -17,6 +17,7 @@ import Dashboard from './components/Dashboard'
 import OSInfo from './containers/os/OSInfo'
 import SysRuntimeNet from './containers/sys/RuntimeNet'
 import RuntimeWorker from './containers/sys/RuntimeWorker'
+import RuntimeLogger from './containers/sys/RuntimeLogger'
 import Admin from './components/Admin'
 import { setOsInfo, beginOsRuntime, beginSysRuntime } from './reducer/dashboard'
 
@@ -40,6 +41,7 @@ ReactDOM.render(
                     <Left />
                     <div className="container">
                         <Switch>
+                            <Route path="/sys/run/logger" exact component={RuntimeLogger}/>
                             <Route path="/sys/run/worker" exact component={RuntimeWorker}/>
                             <Route path="/sys/run" exact component={SysRuntimeNet}/>
                             <Route path="/os/info" exact component={OSInfo}/>

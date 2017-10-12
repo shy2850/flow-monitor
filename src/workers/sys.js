@@ -1,5 +1,6 @@
 const MAX_RUNTIME = 60
 const REG = /[\d\.]+/g
+const toHex = (n) => `${n}`.replace(/(\.\d{3})\d+$/, '$1').replace(/(\d)(?=(?:\d{3})+(\.|$))/g, '$1,')
 
 let result
 let current = {
@@ -196,13 +197,26 @@ const exec = {
             drop_messages,
             drop_bytes
         ] = v.match(REG).map(Number)
-        result.act.push({
+        const appId = id / 500 | 0
+        const action = {
             id,
             report_messages,
             report_bytes,
             drop_messages,
             drop_bytes
-        })
+        }
+        let app = result.app.find(({id}) => id === appId)
+        if (!app) {
+            result.app.push({
+                id: appId,
+                actions: [
+                    action
+                ]
+            })
+        } else {
+            app.actions.push(action)
+        }
+        result.act.push(action)
     },
     top: v => {
         const [
@@ -238,6 +252,7 @@ new EventSource('/sys.runtime').onmessage = function (e) {
         worker: [],
         logger: [],
         act: [],
+        app: [],
         top: {},
         current
     }
