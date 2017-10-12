@@ -4,7 +4,7 @@ dest
 dist
 output
 data
-.log
-runtime.log
-.DS_Store
 
+*.log
+
+.DS_Store
