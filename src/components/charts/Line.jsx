@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactEcharts from 'echarts-for-react'
 import moment from '../../moment'
+import { alert } from '../../util/Dialog'
 
 const TIMES = 60
 export default class extends React.Component {
@@ -57,8 +58,11 @@ export default class extends React.Component {
             })
         }
     }
+    onClick = () => {
+        alert('hhe').always((e) => console.log(e))
+    } 
     render () {
         const { height = 300 } = this.props
-        return <ReactEcharts option={this.getOption()} style={{height}} />
+        return <ReactEcharts option={this.getOption()} style={{height}} onClick={this.onClick}/>
     }
 }
