@@ -4,7 +4,7 @@ dest
 dist
 output
 data
-
+fonts
 **.log
 
 .DS_Store

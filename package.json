@@ -4,6 +4,7 @@
   "description": "flow monitor on router devices",
   "main": "index.js",
   "scripts": {
+    "install": "cp -rf ./node_modules/bootstrap/fonts ./",
     "start": "f2e start",
     "lint": "eslint --ext .jsx src/ --fix",
     "build": "f2e build",

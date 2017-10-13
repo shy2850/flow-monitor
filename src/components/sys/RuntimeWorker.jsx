@@ -1,7 +1,8 @@
 import React from 'react'
-import { Table, Row, Col, Panel } from 'react-bootstrap'
+import { Table, Row, Col } from 'react-bootstrap'
 import Line from '../charts/Line'
 import SnapTable from '../table/SnapTable'
+import Panel from '../widget/Panel'
 
 const COLUMNS = {
     base: [
@@ -88,7 +89,7 @@ export default ({worker = [], current = {}, top = {}}) => {
         current_dns_session_num.push({name: `线程${n}`, data: current.current_dns_session_num[i]})
     })
     return <div>
-        <Panel>
+        <Panel header="各线程综合指标">
             <SnapTable data={worker} columns={COLUMNS.base} getSum={(arr, column) => top[column]}/>
             <Row>
                 <Col md={6}>
@@ -99,7 +100,7 @@ export default ({worker = [], current = {}, top = {}}) => {
                 </Col>
             </Row>
         </Panel>
-        <Panel>
+        <Panel header="TCP&UDP">
             <SnapTable data={worker} columns={COLUMNS.tcp} getSum={(arr, column) => top[column]}/>
             <Row>
                 <Col md={6}>
@@ -112,10 +113,10 @@ export default ({worker = [], current = {}, top = {}}) => {
             <SnapTable data={worker} columns={COLUMNS.udp} getSum={(arr, column) => top[column]}/>
             <Line title="UDP会话数" series={current_udp_session_num} height={200} />
         </Panel>
-        <Panel>
+        <Panel header="ICMP">
             <SnapTable data={worker} columns={COLUMNS.icmp} getSum={(arr, column) => top[column]}/>
         </Panel>
-        <Panel>
+        <Panel header="HTTP&SSL">
             <SnapTable data={worker} columns={COLUMNS.http.concat(COLUMNS.ssl)} getSum={(arr, column) => top[column]}/>
             <Row>
                 <Col md={6}>
@@ -126,7 +127,7 @@ export default ({worker = [], current = {}, top = {}}) => {
                 </Col>
             </Row>
         </Panel>
-        <Panel>
+        <Panel header="DNS">
             <SnapTable data={worker} columns={COLUMNS.dns} getSum={(arr, column) => top[column]}/>
             <Line title="DNS会话数" series={current_dns_session_num} height={200} />
         </Panel>

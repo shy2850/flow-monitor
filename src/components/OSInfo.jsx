@@ -1,8 +1,9 @@
 import React from 'react'
-import { Row, Col, Panel, InputGroup, FormControl } from 'react-bootstrap'
+import { Row, Col, InputGroup, Panel, FormControl } from 'react-bootstrap'
+import CollapsePanel from './widget/Panel'
 import { toStorage } from '../util/Number'
 
-const Processor = ({processors}) => <Panel header={`CPU (${processors.length})`}>
+const Processor = ({processors}) => <CollapsePanel header={`CPU (${processors.length})`}>
     {processors.map((p, i) => <Col lg={3} md={4} sm={6} key={`${i}`}>
         <Panel>
             <p title={p.version}>{p.version}</p>
@@ -14,28 +15,28 @@ const Processor = ({processors}) => <Panel header={`CPU (${processors.length})`}
             </p>}
         </Panel>
     </Col>)}
-</Panel>
+</CollapsePanel>
 
-const Memory = ({memories}) => <Panel header={`内存 (${memories.length})`}>
+const Memory = ({memories}) => <CollapsePanel header={`内存 (${memories.length})`}>
     {memories.filter(m => m.size).map((m, i) => <Col lg={3} md={4} sm={6} key={`${i}`}>
         <Panel>
             <p>{toStorage(m.size)}</p>
             <p title={m.description}>{m.description}</p>
         </Panel>
     </Col>)}
-</Panel>
+</CollapsePanel>
 
-const Disk = ({disks}) => <Panel header={`硬盘 (${disks.length})`}>
+const Disk = ({disks}) => <CollapsePanel header={`硬盘 (${disks.length})`}>
     {disks.map((d, i) => <Col lg={3} md={4} sm={6} key={`${i}`}>
         <Panel>
             <p>{toStorage(d.size)}</p>
             <p title={d.product}>{`${d.description || ''} [${d.product || 'Unknown Product'}]`}</p>
         </Panel>
     </Col>)}
-</Panel>
+</CollapsePanel>
 
 const Network = ({nets}) => {
-    return <Panel header={`网络接口 (${nets.length})`}>
+    return <CollapsePanel header={`网络接口 (${nets.length})`}>
         {nets.map((n, i) => <Col lg={3} md={4} sm={6} key={`${i}`}>
             <Panel>
                 <p>{n.id} [{n.family}]</p>
@@ -44,16 +45,16 @@ const Network = ({nets}) => {
                 <p title={`${n.address}/${n.netmask}`}>地址/网关: {n.address}/{n.netmask}</p>
             </Panel>
         </Col>)}
-    </Panel>
+    </CollapsePanel>
 }
 
-const Gfx = ({gfxes}) => <Panel header={`显卡 (${gfxes.length})`}>
+const Gfx = ({gfxes}) => <CollapsePanel header={`显卡 (${gfxes.length})`}>
     {gfxes.map((g, i) => <Col lg={3} md={4} sm={6} key={`${i}`}>
         <Panel>
             <p>{g.product} {g.description}</p>
         </Panel>
     </Col>)}
-</Panel>
+</CollapsePanel>
 
 export default ({
     id,

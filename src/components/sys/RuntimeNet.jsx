@@ -27,7 +27,7 @@ export default ({nic = [], current = {}}) => {
         send_bytes.push({name: `nic ${n}`, data: reduceCurrent(current.send_bytes[i])})
         send_packets.push({name: `nic ${n}`, data: reduceCurrent(current.send_packets[i])})
     })
-    return <Panel>
+    return <Panel header="各网卡汇总信息">
         <SnapTable name="网卡" data={nic} columns={['send_bytes', 'recv_bytes', 'send_packets', 'recv_packets', 'error_packets', 'drop_packets']}/>
         <Row>
             <Col md={6}>

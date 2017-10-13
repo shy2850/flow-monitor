@@ -58,4 +58,4 @@ const dialog = (info, options) => new Promise((resolve, reject) => {
     } = options || {}
     ReactDOM.render(<Dialog title={title} info={info} visible resolve={resolve} reject={reject} {...options}/>, holder)
 })
-export const alert = (msg, options) => dialog(<div className="text-center">{msg}</div>, options)
+export const alert = dialog

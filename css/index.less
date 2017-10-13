@@ -82,6 +82,19 @@ body {
         }
     }
 
+    .panel {
+        overflow: hidden;
+        &.collapse-panel {
+            .glyphicon {
+                cursor: pointer;
+            }
+            &.in {
+                .panel-body {
+                    display: none;
+                }
+            }
+        }
+    }
     table {
         &, th {
             text-align: right;
